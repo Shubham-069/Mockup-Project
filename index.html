@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="container1">
+            <nav id="navbar">
+                <div class="logo1">
+                    <img src="https://cdn.pixabay.com/photo/2022/09/06/22/19/butterfly-7437588_960_720.png">
+                </div>
+
+                <div class="icons">
+                    <i class="fa-solid fa-magnifying-glass search"></i>
+                    <i class="fa-solid fa-house"></i>
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <i class="fa-solid fa-list"></i>
+                    <i class="fa-solid fa-user"></i>
+                    <div class="notification">
+                        <i class="fa-solid fa-bell"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container2">
+            <div class="bell">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <div class="box">
+                <div class="logo2">
+                    <img src="SquareLite_202226182333667.jpg">
+                </div>
+                <div class="text">
+                    <h3>Hi Mike,</h3>
+                    <p>welcome back</p>
+                </div>
+            </div>
+
+            <div class="box21">
+                <h4>Today</h4>
+
+                <h2>$19,892</h2>
+                <p>Account Balance</p>
+
+                <div class="box21-info">
+                    <div class="box21-info1">
+                        <h4>4,000</h4>
+                        <p>Year-to-Date Contributions</p>
+                    </div>
+                    <div class="box21-info2">
+                        <h4>$1,892</h4>
+                        <p>Total Interest</p>
+                    </div>
+                </div>
+
+                <button class="btn">I want to</button>
+            </div>
+
+            <div class="box22">
+                <h2>Recent Transactions</h2>
+
+                <p>2020-08-07</p>
+                <h4>Withdrawal Transfer to Bank-XXX11</h4>
+                <hr>
+
+                <p>2020-07-21</p>
+                <h4>Withdrawal Transfer to Bank-XXX11</h4>
+                <hr>
+
+                <p>2020-07-16</p>
+                <h4>Withdrawal Transfer to Bank-XXX11</h4>
+                <hr>
+            </div>
+
+        </div>
+
+        <div class="container3">
+            <p>Retirement Income</p>
+            <h4>Starting Year 2056</h4>
+
+            <div class="box31">
+                <div class="col">
+                    <h4>$300,000</h4>
+                    <p>My Goal</p>
+                    <hr>
+                </div>
+
+                <div class="col">
+                    <h4>59%</h4>
+                    <p>Goal Achieved</p>
+                    <hr>
+                </div>
+
+                <div class="col">
+                    <h4>$300</h4>
+                    <p>Est. Monthly Income</p>
+                    <hr>
+                </div>
+
+            </div>
+
+            <h3>Contributions Overtime</h3>
+            <div class="box32">
+                <div class="col1">
+                    <button class="btn3" id="btncol1"></button>
+                    <p>Employer</p>
+                    <h4>K 73,500</h4>
+                </div>
+
+                <div class="col1">
+                    <button class="btn3" id="btncol2"></button>
+                    <p>Employee</p>
+                    <h4>K 52,500</h4>
+                </div>
+
+                <div class="col1">
+                    <button class="btn3" id="btncol3"></button>
+                    <p>Total Interest</p>
+                    <h4>K 244,313</h4>
+                </div>
+
+            </div>
+
+            <div class="bar">
+                <canvas id="myChart" width="100%" height="40"></canvas>
+
+                <script>
+                    // Sample data for the chart (replace this with your own data)
+                    const data = {
+                        labels: [20, '', 25, '', 30, '', 35, '', 40, '', 60, '', 65],
+                        datasets: [
+                            {
+                                data: [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70],
+                                backgroundColor: 'rgba(0, 0, 139)', // Dark blue with 50% transparency
+                                borderColor: 'rgba(0, 0, 139)', // Dark blue
+                                borderWidth: 1
+                            },
+                            {
+                                data: [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75],
+                                backgroundColor: 'rgba(0, 0, 255)', // Blue with 50% transparency
+                                borderColor: 'rgba(0, 0, 255)', // Blue
+                                borderWidth: 1
+                            },
+                            {
+                                data: [5, , 10, 15, 18, 25, 29, 31, 35, 42, 47, 55, 65, 77],
+                                backgroundColor: 'rgba(173, 216, 230)', // Light blue with 50% transparency
+                                borderColor: 'rgba(173, 216, 230)', // Light blue
+                                borderWidth: 1
+                            }
+                        ]
+                    };
+
+                    // Configuration options for the chart
+                    const options = {
+                        scales: {
+                            x: {
+                                stacked: true // Stack bars horizontally
+                            },
+                            y: {
+                                stacked: true, // Stack bars vertically
+                                ticks: {
+                                    beginAtZero: true,
+                                    callback: function (value, index, values) {
+                                        return '$' + value;
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false // Hide the legend
+                            }
+                        }
+                    };
+
+                    // Create the bar chart
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: data,
+                        options: options
+                    });
+                </script>
+            </div>
+
+            <div class="box33">
+                <h4>How do I compare to my peers?</h4>
+                <p>These numbers represent current goal achievement </p>
+
+
+                <div class="circlechart">
+                    <div class="info">
+                        <div class="col2">
+                            <label>Age:</label>
+                            <select class="text">
+                                <option value="">Under 30</option>
+                                <option value="">Above 30</option>
+                                <option value="">Undefined</option>
+                            </select>
+                            <hr>
+                        </div>
+
+                        <div class="col2">
+                            <label>Salary:</label>
+                            <select class="text">
+                                <option value="">K 20-K 30</option>
+                                <option value="">K 30-K 50</option>
+                                <option value="">Undefined</option>
+                            </select>
+                            <hr>
+                        </div>
+
+                        <div class="col2">
+                            <label>Gender:</label>
+                            <select class="text">
+                                <option value="">Male</option>
+                                <option value="">Female</option>
+                                <option value="">Others</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="charts">
+                        <canvas id="hollowCircleChart1" width="150" height="150"></canvas>
+                        <canvas id="hollowCircleChart2" width="150" height="150"></canvas>
+                        <canvas id="hollowCircleChart3" width="150" height="150"></canvas>
+
+
+
+                        <script>
+                            // Function to draw the hollow circle chart
+                            function drawHollowCircleChart(canvasId, percentage, thickness, text) {
+                                const canvas = document.getElementById(canvasId);
+                                const context = canvas.getContext("2d");
+                                const centerX = canvas.width / 2;
+                                const centerY = canvas.height / 2;
+                                const radius = 45;
+                                const startAngle = Math.PI * 1.5;
+                                const endAngle = startAngle + (Math.PI * 2 * (percentage / 100));
+
+                                // Draw the background circle
+                                context.beginPath();
+                                context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+                                context.lineWidth = thickness;
+                                context.strokeStyle = "#f0f0f0";
+                                context.stroke();
+
+                                // Draw the filled circle
+                                context.beginPath();
+                                context.arc(centerX, centerY, radius, startAngle, endAngle);
+                                context.lineWidth = thickness;
+                                context.strokeStyle = "#2E8B57"; // Sea Green color
+                                context.stroke();
+
+                                // Draw the center text (percentage)
+                                context.font = "bold 16px Arial"; // Bold and 16px font size
+                                context.fillStyle = "#000"; // Black color
+                                context.textAlign = "center";
+                                context.textBaseline = "middle";
+                                context.fillText(percentage + "%", centerX, centerY);
+
+                                // Draw the text below the circle chart
+                                context.font = "bold 14px Arial"; // Bold and 14px font size
+                                context.fillStyle = "#000"; // Black color
+                                context.fillText(text, centerX, centerY + radius + 20); // 20 pixels below the circle
+                            }
+
+                            // Call the function for each hollow circle chart with the desired percentage, thickness, and text
+                            drawHollowCircleChart("hollowCircleChart1", 78, 8, "Average");
+                            drawHollowCircleChart("hollowCircleChart2", 95, 8, "Top");
+                            drawHollowCircleChart("hollowCircleChart3", 59, 8, "Me");
+                        </script>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container4">
+
+            <div class="box4">
+                <h2>Retirement Strategy</h2>
+                <h4>Employee Contribution</h4>
+                <h4><input type="range" id="percentage" name="percentage" min="0" max="100" value="50"><span
+                        class="spaced-text">12%</span></h4>
+
+                <h4>Retirement Age</h4>
+                <h4><input type="range" id="percentage" name="percentage" min="0" max="100" value="65"><span
+                        class="spaced-text">65</span></h4>
+
+                <hr>
+
+                <h4>Employer Contribution <span class="spaced-text">8.4%</span> </h4>
+                <h4>Interest Rate <span class="spaced-text">5%</span></h4>
+
+                <button class="btn">Update</button>
+
+                <h5>View Help Docs &rsaquo;</h5>
+
+            </div>
+
+            <div class="footer">
+                <div class="vertical-line">
+                    <div class="text">
+                        <h4>Are you considering a </h4>
+                        <h2>Housing Advance?</h2>
+
+                        <p>Limited time reduced interest</p>
+
+                        <h5>Learn More &rsaquo;</h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
