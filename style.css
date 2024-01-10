@@ -414,7 +414,7 @@
         bottom: 0px;
         left: 0px;
         width: 100%;
-        height: 90px;
+        height: 70px;
         background-color: white;
         display: flex;
         border-radius: 5px;
@@ -435,7 +435,7 @@
     .icons i {
         font-size: 25px;
         padding: 10px 15px;
-        margin: 0px 15px;
+        margin: 10px 17px;
     }
 
     .icons .search {
@@ -462,10 +462,10 @@
     .container2 .bell {
         display: block;
         color: gray;
-        font-size: 25px;
+        font-size: 20px;
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 15px;
+        right: 0px;
     }
 
     .box21 {
@@ -554,18 +554,18 @@
     }
 
     .box33 .charts #hollowCircleChart1 {
-        height: 100px;
-        width: 100px;
+        height: 110px;
+        width: 110px;
     }
 
     .box33 .charts #hollowCircleChart2 {
-        height: 100px;
-        width: 100px;
+        height: 110px;
+        width: 110px;
     }
 
     .box33 .charts #hollowCircleChart3 {
-        height: 100px;
-        width: 100px;
+        height: 110px;
+        width: 110px;
     }
 
     .container4 .box4 {
